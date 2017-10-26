@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var inquirer = require('inquirer');
 var childProcess = require('child_process');
 
