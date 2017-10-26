@@ -30,6 +30,18 @@ const removeBranchQuestions = branches => {
   }));
 };
 
+const removeAllBranchesQuestion = {
+  type: 'list',
+  name: 'removeAllBranches',
+  message: 'Are you sure you want to remove all branches except \'master\'?',
+  choices: [
+    new inquirer.Separator(),
+    { name: 'No', value: false },
+    { name: 'Yes', value: true },
+    new inquirer.Separator()
+  ]
+};
+
 inquirer.prompt([initialQuestion]).then(answer => {
   switch (answer.selectedOption) {
     case 'prune': {
@@ -55,6 +67,15 @@ inquirer.prompt([initialQuestion]).then(answer => {
             }
           });
         });
+      });
+    }
+    case 'delete': {
+      inquirer.prompt([removeAllBranchesQuestion]).then(answer => {
+        if (answer.removeAllBranches) {
+          childProcess.exec('git branch | grep -v "master" | xargs git branch -D', {}, () => {
+            console.log('=> Removed all branches except \'master\':');
+          });
+        }
       });
     }
   }
