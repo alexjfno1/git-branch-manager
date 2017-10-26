@@ -1,0 +1,14 @@
+{
+  "name": "git-branch-manager",
+  "version": "0.0.1",
+  "description": "A CLI to help manage your git branches",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
