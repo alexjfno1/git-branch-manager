@@ -49,6 +49,7 @@ inquirer.prompt([initialQuestion]).then(answer => {
       childProcess.exec('git prune remote origin', {}, () => {
         console.log('=> Done Pruning remote branches');
       });
+      break;
     }
     case 'tidy': {
       childProcess.exec('git branch | grep -v "master"', {}, (err, stdout) => {
@@ -68,6 +69,7 @@ inquirer.prompt([initialQuestion]).then(answer => {
           });
         });
       });
+      break;
     }
     case 'delete': {
       inquirer.prompt([removeAllBranchesQuestion]).then(answer => {
@@ -77,6 +79,7 @@ inquirer.prompt([initialQuestion]).then(answer => {
           });
         }
       });
+      break;
     }
   }
 });
