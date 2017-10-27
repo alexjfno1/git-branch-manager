@@ -17,17 +17,19 @@ const initialQuestion = {
 };
 
 const removeBranchQuestions = branches => {
-  return branches.map(branch => ({
-    type: 'list',
-    name: branch,
-    message: 'Remove "' + branch + '" branch?',
-    choices: [
-      new inquirer.Separator(),
-      { name: 'No', value: false },
-      { name: 'Yes', value: true },
-      new inquirer.Separator()
-    ]
-  }));
+  return branches
+    .filter(branch => !branch.startsWith('*'))
+    .map(branch => ({
+      type: 'list',
+      name: branch,
+      message: 'Remove "' + branch + '" branch?',
+      choices: [
+        new inquirer.Separator(),
+        { name: 'No', value: false },
+        { name: 'Yes', value: true },
+        new inquirer.Separator()
+      ]
+    }));
 };
 
 const removeAllBranchesQuestion = {
