@@ -3,7 +3,11 @@
   "version": "0.0.3",
   "description": "A CLI to help manage your git branches",
   "main": "index.js",
-  "author": "",
+  "author": "Alex Foster",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexjfno1/git-branch-manager.git"
+  },
   "license": "ISC",
   "bin": "./index.js",
   "dependencies": {
