@@ -1,6 +1,6 @@
 {
   "name": "git-branch-manager",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A CLI to help manage your git branches",
   "main": "index.js",
   "author": "Alex Foster",
