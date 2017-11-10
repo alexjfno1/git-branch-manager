@@ -4,7 +4,7 @@ const checkoutBranchQuestion = branches => {
   return {
     type: 'list',
     name: 'branchToCheckout',
-    message: 'Which branch would you like tp checkout?',
+    message: 'Which branch would you like to checkout?',
     choices: [
       new inquirer.Separator(),
       ...branches

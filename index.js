@@ -24,7 +24,10 @@ inquirer.prompt([initialQuestion]).then(answer => {
     }
     case 'checkoutRemote': {
       parseBranches('git branch -r', (branches) => {
-        const remoteBranches = branches.map(branch => branch.replace('origin/', ''));
+        const remoteBranches = branches
+          .map(branch => branch.replace('origin/', ''))
+          .map(branch => branch.replace('HEAD->origin/', ''));
+
         inquirer.prompt(branchQuestions.checkout(remoteBranches)).then(answer => {
           checkoutBranch(answer.branchToCheckout);
         });

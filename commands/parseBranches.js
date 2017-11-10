@@ -1,7 +1,7 @@
 var childProcess = require('child_process');
 
 module.exports = (command, cb) => {
-  childProcess.exec('git branch', {}, (err, stdout) => {
+  childProcess.exec(command, {}, (err, stdout) => {
     const branches = stdout
       .replace(/\n/g, '/-/')
       .replace(/\s/g, '')
