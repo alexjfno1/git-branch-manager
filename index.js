@@ -9,7 +9,8 @@ const initialQuestion = {
   message: 'What would you like to do?',
   choices: [
     new inquirer.Separator(),
-    { name: 'Checkout a branch', value: 'checkout' },
+    { name: 'Checkout a local branch', value: 'checkoutLocal' },
+    { name: 'Checkout a remote branch', value: 'checkoutRemote' },
     { name: 'Prune remote branches', value: 'prune' },
     { name: 'Tidy up branches', value: 'tidy' },
     { name: 'Remove all branches (except master)', value: 'delete' },
@@ -62,13 +63,30 @@ const removeAllBranchesQuestion = {
 
 inquirer.prompt([initialQuestion]).then(answer => {
   switch (answer.selectedOption) {
-    case 'checkout': {
+    case 'checkoutLocal': {
       childProcess.exec('git branch', {}, (err, stdout) => {
         const branches = stdout
           .replace(/\n/g, '/-/')
           .replace(/\s/g, '')
           .split('/-/')
           .filter(branch => branch.length > 0);
+
+        inquirer.prompt(checkoutBranchQuestion(branches)).then(answer => {
+          childProcess.exec('git checkout ' + answer.branchToCheckout, {}, (_, stdout, stderr) => {
+            console.log('\n', stdout, stderr);
+          });
+        });
+      });
+      break;
+    }
+    case 'checkoutRemote': {
+      childProcess.exec('git branch -r', {}, (err, stdout) => {
+        const branches = stdout
+          .replace(/\n/g, '/-/')
+          .replace(/\s/g, '')
+          .split('/-/')
+          .filter(branch => branch.length > 0)
+          .map(branch => branch.replace('origin/', ''));
 
         inquirer.prompt(checkoutBranchQuestion(branches)).then(answer => {
           childProcess.exec('git checkout ' + answer.branchToCheckout, {}, (_, stdout, stderr) => {
