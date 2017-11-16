@@ -1,7 +1,8 @@
-var childProcess = require('child_process');
+var childProcess = require("child_process");
 
 module.exports = () => {
-  childProcess.exec('git prune remote origin', {}, () => {
-    console.log('=> Done Pruning remote branches');
+  childProcess.exec("git remote prune origin", {}, (_, stdout, stderr) => {
+    console.log("=> Done Pruning remote branches");
+    console.log("\n", stdout, stderr);
   });
 };
