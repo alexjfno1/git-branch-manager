@@ -43,8 +43,15 @@ const removeAllBranchesQuestion = () => ({
   ]
 });
 
+const newBranchQuestion = () => ({
+  type: 'input',
+  name: 'branchName',
+  message: 'Enter branch name'
+});
+
 module.exports = {
   checkout: checkoutBranchQuestion,
   remove: removeBranchQuestions,
-  removeAll: removeAllBranchesQuestion
+  removeAll: removeAllBranchesQuestion,
+  newBranch: newBranchQuestion
 }
