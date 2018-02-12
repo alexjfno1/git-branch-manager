@@ -1,4 +1,4 @@
-var childProcess = require('child_process');
+const childProcess = require('child_process');
 
 module.exports = (command, cb) => {
   childProcess.exec(command, {}, (err, stdout) => {

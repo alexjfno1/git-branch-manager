@@ -1,4 +1,4 @@
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 
 module.exports = {
   type: 'list',
@@ -12,6 +12,6 @@ module.exports = {
     { name: 'Prune remote branches', value: 'prune' },
     { name: 'Tidy up branches', value: 'tidy' },
     { name: 'Remove all branches (except master)', value: 'delete' },
-    new inquirer.Separator()
-  ]
+    new inquirer.Separator(),
+  ],
 };
