@@ -6,7 +6,7 @@ module.exports = (command, cb) => {
       .replace(/\n/g, '/-/')
       .replace(/\s/g, '')
       .split('/-/')
-      .filter(branch => branch.length > 0);
+      .filter((branch) => branch.length > 0);
 
     cb(branches);
   });

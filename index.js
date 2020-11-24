@@ -25,14 +25,12 @@ inquirer.prompt([initialQuestion]).then((options) => {
     case 'checkoutRemote': {
       parseBranches('git branch -r', (branches) => {
         const remoteBranches = branches
-          .map(branch => branch.replace('origin/', ''))
-          .map(branch => branch.replace('HEAD->origin/', ''));
+          .map((branch) => branch.replace('origin/', ''))
+          .map((branch) => branch.replace('HEAD->origin/', ''));
 
-        inquirer
-          .prompt(branchQuestions.checkout(remoteBranches))
-          .then((answer) => {
-            checkoutBranch(answer.branchToCheckout);
-          });
+        inquirer.prompt(branchQuestions.checkout(remoteBranches)).then((answer) => {
+          checkoutBranch(answer.branchToCheckout);
+        });
       });
       break;
     }
