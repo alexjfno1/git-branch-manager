@@ -1,6 +1,6 @@
 {
   "name": "git-branch-manager",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "description": "A CLI to help manage your git branches",
   "author": "Alex Foster",
   "license": "ISC",
@@ -9,7 +9,9 @@
     "url": "git@github.com:alexjfno1/git-branch-manager.git"
   },
   "main": "index.js",
-  "bin": "./index.js",
+  "bin": {
+    "git-branch-manager": "index.js"
+  },
   "scripts": {
     "lint": "eslint ."
   },
