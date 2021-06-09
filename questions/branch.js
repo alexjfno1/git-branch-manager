@@ -1,13 +1,13 @@
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
 
 const checkoutBranchQuestion = (branches) => ({
-  type: 'list',
-  name: 'branchToCheckout',
-  message: 'Which branch would you like to checkout?',
+  type: "list",
+  name: "branchToCheckout",
+  message: "Which branch would you like to checkout?",
   choices: [
     new inquirer.Separator(),
     ...branches
-      .filter((branch) => !branch.startsWith('*'))
+      .filter((branch) => !branch.startsWith("*"))
       .map((branch) => ({ name: branch, value: branch })),
     new inquirer.Separator(),
   ],
@@ -15,35 +15,35 @@ const checkoutBranchQuestion = (branches) => ({
 
 const removeBranchQuestions = (branches) =>
   branches
-    .filter((branch) => !branch.startsWith('*'))
+    .filter((branch) => !branch.startsWith("*"))
     .map((branch) => ({
-      type: 'list',
+      type: "list",
       name: branch,
       message: `Remove "${branch}" branch?`,
       choices: [
         new inquirer.Separator(),
-        { name: 'No', value: false },
-        { name: 'Yes', value: true },
+        { name: "No", value: false },
+        { name: "Yes", value: true },
         new inquirer.Separator(),
       ],
     }));
 
 const removeAllBranchesQuestion = () => ({
-  type: 'list',
-  name: 'removeAllBranches',
-  message: "Are you sure you want to remove all branches except 'master'?",
+  type: "list",
+  name: "removeAllBranches",
+  message: "Are you sure you want to remove all branches except 'main'?",
   choices: [
     new inquirer.Separator(),
-    { name: 'No', value: false },
-    { name: 'Yes', value: true },
+    { name: "No", value: false },
+    { name: "Yes", value: true },
     new inquirer.Separator(),
   ],
 });
 
 const newBranchQuestion = () => ({
-  type: 'input',
-  name: 'branchName',
-  message: 'Enter branch name',
+  type: "input",
+  name: "branchName",
+  message: "Enter branch name",
 });
 
 module.exports = {
