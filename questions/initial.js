@@ -11,7 +11,7 @@ module.exports = {
     { name: "Create new branch", value: "newBranch" },
     { name: "Prune remote branches", value: "prune" },
     { name: "Tidy up branches", value: "tidy" },
-    { name: "Remove all branches (except main)", value: "delete" },
+    { name: "Remove all branches (except main or master)", value: "delete" },
     new inquirer.Separator(),
   ],
 };
